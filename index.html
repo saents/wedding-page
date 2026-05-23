@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wedding invitation — join us in celebrating our special day." />
+  <title>Wedding Invitation</title>
+
+  <!-- Google Fonts (overridden by config) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS & Splitting.js -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== PRELOADER ========== -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__rings">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="preloader__text" data-split>Loading</p>
+      <div class="preloader__progress"><div class="preloader__bar"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== SCROLL PROGRESS ========== -->
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar"></div></div>
+
+  <!-- ========== CURSOR GLOW ========== -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ========== FLOATING PARTICLES & PETALS ========== -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="petals-container" aria-hidden="true"></div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#hero" class="nav__logo" data-nav-logo></a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#couple" class="nav__link">Couple</a></li>
+        <li><a href="#story" class="nav__link">Story</a></li>
+        <li><a href="#details" class="nav__link">Details</a></li>
+        <li><a href="#schedule" class="nav__link">Schedule</a></li>
+        <li><a href="#gallery" class="nav__link">Gallery</a></li>
+        <li><a href="#rsvp" class="nav__link nav__link--cta">RSVP</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon theme-toggle__icon--sun">☀</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">☽</span>
+        </button>
+        <div class="theme-picker" id="theme-picker" aria-label="Theme colors"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img class="hero__image" data-hero-image alt="" loading="eager" />
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="hero__content container" data-aos="fade-up" data-aos-duration="1200">
+        <p class="hero__subtitle" data-hero-subtitle></p>
+        <h1 class="hero__title">
+          <span class="hero__name" data-bride-name></span>
+          <span class="hero__ampersand" data-split>&</span>
+          <span class="hero__name" data-groom-name></span>
+        </h1>
+        <p class="hero__date" data-wedding-date></p>
+        <div class="hero__actions">
+          <a href="#rsvp" class="btn btn--primary">RSVP Now</a>
+          <a href="#details" class="btn btn--ghost">View Details</a>
+        </div>
+      </div>
+      <a href="#couple" class="hero__scroll" aria-label="Scroll down">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ========== COUNTDOWN ========== -->
+    <section class="countdown section" id="countdown">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Save the Date</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Counting Down</h2>
+        <div class="countdown__grid" id="countdown-grid" data-aos="fade-up" data-aos-delay="200"></div>
+      </div>
+    </section>
+
+    <!-- ========== COUPLE INTRODUCTION ========== -->
+    <section class="couple section" id="couple">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">The Happy Couple</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Two Hearts, One Love</h2>
+        <div class="couple__grid" id="couple-grid"></div>
+      </div>
+    </section>
+
+    <!-- ========== LOVE STORY TIMELINE ========== -->
+    <section class="story section" id="story">
+      <div class="story__bg" data-story-bg></div>
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Our Journey</p>
+        <h2 class="section__title section__title--light" data-aos="fade-up" data-aos-delay="100" data-split>Love Story</h2>
+        <p class="story__intro" data-aos="fade-up" data-aos-delay="150" data-story-intro></p>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ========== WEDDING DETAILS ========== -->
+    <section class="details section" id="details">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Ceremony & Reception</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Wedding Details</h2>
+        <div class="details__grid" id="details-grid"></div>
+      </div>
+    </section>
+
+    <!-- ========== EVENT SCHEDULE ========== -->
+    <section class="schedule section" id="schedule">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Timeline</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Day Schedule</h2>
+        <div class="schedule__list" id="schedule-list"></div>
+      </div>
+    </section>
+
+    <!-- ========== PHOTO GALLERY ========== -->
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Memories</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Gallery</h2>
+        <div class="gallery__grid" id="gallery-grid"></div>
+      </div>
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox__close" aria-label="Close">&times;</button>
+        <button class="lightbox__prev" aria-label="Previous">&#8249;</button>
+        <img class="lightbox__img" src="" alt="" />
+        <button class="lightbox__next" aria-label="Next">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- ========== RSVP ========== -->
+    <section class="rsvp section" id="rsvp">
+      <div class="rsvp__bg" data-rsvp-bg></div>
+      <div class="container">
+        <div class="rsvp__card glass" data-aos="zoom-in" data-aos-duration="1000">
+          <p class="section__label">Join Us</p>
+          <h2 class="section__title" data-split>RSVP</h2>
+          <p class="rsvp__text" data-rsvp-text></p>
+          <a href="#" class="btn btn--primary btn--large" id="rsvp-link" target="_blank" rel="noopener">Confirm Attendance</a>
+          <p class="rsvp__note" data-rsvp-note></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MAP ========== -->
+    <section class="map section" id="map">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">Location</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Find Us</h2>
+        <div class="map__wrapper glass" data-aos="fade-up" data-aos-delay="200">
+          <div class="map__info" id="map-info"></div>
+          <div class="map__embed" id="map-embed"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAMILY & FRIENDS ========== -->
+    <section class="family section" id="family">
+      <div class="container">
+        <p class="section__label" data-aos="fade-up">With Love</p>
+        <h2 class="section__title" data-aos="fade-up" data-aos-delay="100" data-split>Family & Friends</h2>
+        <div class="family__grid" id="family-grid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="container footer__inner">
+      <div class="footer__names" data-footer-names></div>
+      <p class="footer__date" data-footer-date></p>
+      <div class="footer__contact" id="footer-contact"></div>
+      <div class="footer__music">
+        <button class="music-btn" id="music-btn" aria-label="Toggle background music">
+          <span class="music-btn__icon music-btn__icon--play">♪</span>
+          <span class="music-btn__icon music-btn__icon--pause">‖</span>
+          <span class="music-btn__label">Ambient Music</span>
+        </button>
+        <audio id="bg-music" loop preload="none"></audio>
+      </div>
+      <p class="footer__credit">Made with love · <span data-year></span></p>
+    </div>
+  </footer>
+
+  <!-- ========== LIBRARIES (CDN) ========== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
