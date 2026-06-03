@@ -4,7 +4,7 @@
    ========================================================================== */
 
 const CONFIG = {
-  initials: { bride: "Ս", groom: "Լ" },
+  couple: { bride: "Սարգիս", groom: "Լենա" },
 
   weddingDate: "Հուլիսի 26, 2026",
   countdownTarget: "2026-07-26T14:40:00",
@@ -20,7 +20,7 @@ const CONFIG = {
 
   calendar: {
     year: 2026,
-    month: 6, // 0-indexed: July
+    month: 6,
     highlightDay: 26,
     monthName: "Հուլիս",
     weekDays: ["ԵՐԿ", "ԵՐՔ", "ՉՈՐ", "ՀՆԳ", "ՈՒՐԲ", "ՇԲԹ", "ԿԻՐ"],
@@ -35,28 +35,24 @@ const CONFIG = {
     name: "Սաղմոսավանք",
     description: "Եկեղեցու պսակադրությունը տեղի կունենա Սաղմոսավանքում",
     address: "Սաղմոսավանք, Արագածոտնի մարզ",
-    image: "images/saghmosavanq.jpg",
+    image: "images/saghmosavanq-icon.png",
     mapsLink: "https://maps.google.com/?q=Saghmosavank+Monastery+Armenia",
-    embedUrl:
-      "https://maps.google.com/maps?q=Saghmosavank+Monastery+Armenia&z=15&output=embed",
   },
 
   hall: {
     name: "Հարսնաքար",
-    description: "Հանդիսությունն անցկացվում է Հարսնաքար սրահում",
+    description: "Հանդիսությունն անցկացվում է «Հարսնաքար» սրահում",
     address: "Երևան, Հրաչյա Աճառյան 37",
-    image: "images/harsnaqar.png",
+    image: "images/restaurant.jpg",
     mapsLink: "https://maps.google.com/?q=Harsnaqar+37+Acharyan+Yerevan",
-    embedUrl:
-      "https://maps.google.com/maps?q=Harsnaqar+Restaurant+37+Acharyan+Yerevan&z=15&output=embed",
   },
 
   program: {
     title: "Օրվա ծրագիր",
     schedule: [
-      { time: "12:00", title: "Հարսի և փեսայի տուն", description: "Ընտանիքի և ընկերների տուն" },
-      { time: "14:40", title: "Եկեղեցի", description: "Սաղմոսավանք" },
-      { time: "17:30", title: "Ռեստորան Հարսնաքար", description: "Հանդիսություն" },
+      { time: "12:00", title: "Հարսի և փեսայի տուն", description: "Family & Friends House" },
+      { time: "14:40", title: "Եկեղեցի", description: "«պսակադրություն»" },
+      { time: "17:30", title: "Ռեստորան «Հարսնաքար»", description: "Հանդիսություն" },
     ],
   },
 
@@ -75,6 +71,11 @@ const CONFIG = {
     text: "Մինչ հանդիպում",
   },
 
+  music: {
+    url: "sound/song.mp3",
+    enabled: true,
+  },
+
   theme: {
     primary: "#2c2416",
     primaryLight: "#6b5d4d",
@@ -85,14 +86,14 @@ const CONFIG = {
   fonts: {
     heading: "Noto Sans Armenian",
     body: "Noto Sans Armenian",
+    display: "Noto Serif Armenian",
     googleFontsUrl:
-      "https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@100;200;300;400&display=swap",
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@100;200;300;400&family=Noto+Serif+Armenian:wght@200;300;400&display=swap",
   },
 
   features: {
     preloader: true,
     parallax: true,
-    hearts: true,
   },
 };
 
@@ -105,6 +106,10 @@ const CONFIG = {
   let lenis;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function coupleNames() {
+    return `${CONFIG.couple.bride} և ${CONFIG.couple.groom}`;
+  }
+
   function applyTheme() {
     const root = document.documentElement;
     const t = CONFIG.theme;
@@ -114,21 +119,22 @@ const CONFIG = {
     root.style.setProperty("--color-accent", t.accent);
     root.style.setProperty("--font-heading", `"${CONFIG.fonts.heading}", system-ui, sans-serif`);
     root.style.setProperty("--font-body", `"${CONFIG.fonts.body}", system-ui, sans-serif`);
-    document.title = `${CONFIG.initials.bride} և ${CONFIG.initials.groom} — Հարսանիքի հրավեր`;
+    root.style.setProperty("--font-display", `"${CONFIG.fonts.display}", Georgia, serif`);
+    document.title = `${coupleNames()} — Հարսանիքի հրավեր`;
   }
 
   function populateContent() {
-    $("[data-nav-logo]").textContent = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
-    $("[data-bride-initial]").textContent = CONFIG.initials.bride;
-    $("[data-groom-initial]").textContent = CONFIG.initials.groom;
+    $("[data-preloader-names]") && ($("[data-preloader-names]").textContent = coupleNames());
+    $("[data-bride-name]").textContent = CONFIG.couple.bride;
+    $("[data-groom-name]").textContent = CONFIG.couple.groom;
     $("[data-wedding-date]").textContent = CONFIG.weddingDate;
-    $("[data-footer-names]").textContent = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
+    $("[data-footer-names]").textContent = coupleNames();
     $("[data-footer-date]").textContent = CONFIG.weddingDate;
     $("[data-year]").textContent = new Date().getFullYear();
 
     const heroImg = $("[data-hero-image]");
     heroImg.src = CONFIG.hero.image;
-    heroImg.alt = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
+    heroImg.alt = coupleNames();
 
     $("[data-invitation-title]").textContent = CONFIG.invitation.title;
     $("[data-invitation-text]").textContent = CONFIG.invitation.text;
@@ -148,7 +154,7 @@ const CONFIG = {
     $("[data-closing-text]").textContent = CONFIG.closing.text;
 
     renderCalendar();
-    renderMaps();
+    renderVenues();
     renderSchedule();
     renderCountdown();
   }
@@ -177,17 +183,15 @@ const CONFIG = {
       <div class="calendar__days">${cells}</div>`;
   }
 
-  function renderMaps() {
-    function mapBlock(venue) {
+  function renderVenues() {
+    function venueBlock(venue) {
       return `
-        ${venue.image ? `<div class="venue-block__photo"><img src="${venue.image}" alt="${venue.name}" loading="lazy" /></div>` : ""}
+        ${venue.image ? `<div class="venue-block__photo venue-block__photo--icon"><img src="${venue.image}" alt="${venue.name}" loading="lazy" /></div>` : ""}
         <p class="venue-block__address">${venue.address}</p>
-        <a class="venue-block__link" href="${venue.mapsLink}" target="_blank" rel="noopener">Բացել քարտեզում →</a>
-        <iframe src="${venue.embedUrl}" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="${venue.name}"></iframe>`;
+        <a class="venue-block__link" href="${venue.mapsLink}" target="_blank" rel="noopener">Բացել քարտեզում →</a>`;
     }
-    $("#church-map").innerHTML = mapBlock(CONFIG.church);
-    $("#hall-map").innerHTML = mapBlock(CONFIG.hall);
+    $("#church-map").innerHTML = venueBlock(CONFIG.church);
+    $("#hall-map").innerHTML = venueBlock(CONFIG.hall);
   }
 
   function renderSchedule() {
@@ -257,6 +261,24 @@ const CONFIG = {
 
     tick();
     setInterval(tick, 1000);
+  }
+
+  function initMusic() {
+    if (!CONFIG.music.enabled || prefersReducedMotion) return;
+
+    const audio = $("#bg-music");
+    if (!audio) return;
+
+    audio.src = CONFIG.music.url;
+    audio.volume = 0.45;
+
+    const playMusic = () => {
+      audio.play().catch(() => {});
+    };
+
+    playMusic();
+    document.addEventListener("click", playMusic, { once: true });
+    document.addEventListener("touchstart", playMusic, { once: true, passive: true });
   }
 
   function initPreloader() {
@@ -416,120 +438,6 @@ const CONFIG = {
     update();
   }
 
-  function initHeartParticles() {
-    if (!CONFIG.features.hearts || prefersReducedMotion) return;
-
-    const colors = [
-      CONFIG.theme.primary,
-      CONFIG.theme.primaryLight,
-      CONFIG.theme.accent,
-    ];
-
-    function drawHeart(ctx, x, y, size) {
-      const s = size / 2;
-      ctx.beginPath();
-      ctx.moveTo(0, s * 0.35);
-      ctx.bezierCurveTo(0, -s * 0.2, -s, -s * 0.2, -s, s * 0.35);
-      ctx.bezierCurveTo(-s, s * 0.85, 0, s * 1.25, 0, s * 1.55);
-      ctx.bezierCurveTo(0, s * 1.25, s, s * 0.85, s, s * 0.35);
-      ctx.bezierCurveTo(s, -s * 0.2, 0, -s * 0.2, 0, s * 0.35);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    function createSystem(canvas) {
-      const bounds = canvas.parentElement;
-      const ctx = canvas.getContext("2d");
-      let w = 0;
-      let h = 0;
-      let hearts = [];
-
-      function resize() {
-        const rect = bounds.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        w = Math.max(rect.width, 1);
-        h = Math.max(rect.height, 1);
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
-        canvas.style.width = `${w}px`;
-        canvas.style.height = `${h}px`;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      class Heart {
-        constructor(initial) {
-          this.reset(initial);
-        }
-
-        reset(initial) {
-          this.x = Math.random() * w;
-          this.y = initial ? Math.random() * h : -20;
-          this.size = Math.random() * 12 + 8;
-          this.speedY = Math.random() * 0.35 + 0.15;
-          this.speedX = (Math.random() - 0.5) * 0.25;
-          this.wobble = Math.random() * Math.PI * 2;
-          this.wobbleSpeed = Math.random() * 0.02 + 0.008;
-          this.rotation = Math.random() * Math.PI * 2;
-          this.rotationSpeed = (Math.random() - 0.5) * 0.015;
-          this.opacity = Math.random() * 0.3 + 0.12;
-          this.color = colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        update() {
-          this.wobble += this.wobbleSpeed;
-          this.y += this.speedY;
-          this.x += this.speedX + Math.sin(this.wobble) * 0.2;
-          this.rotation += this.rotationSpeed;
-          if (this.y > h + this.size) this.reset(false);
-          if (this.x < -this.size) this.x = w + this.size;
-          if (this.x > w + this.size) this.x = -this.size;
-        }
-
-        draw() {
-          ctx.save();
-          ctx.globalAlpha = this.opacity;
-          ctx.fillStyle = this.color;
-          ctx.translate(this.x, this.y);
-          ctx.rotate(this.rotation);
-          drawHeart(ctx, 0, 0, this.size);
-          ctx.restore();
-        }
-      }
-
-      resize();
-      const count = Math.min(28, Math.max(6, Math.floor((w * h) / 32000)));
-      hearts = Array.from({ length: count }, () => new Heart(true));
-
-      return {
-        tick() {
-          ctx.clearRect(0, 0, w, h);
-          hearts.forEach((heart) => {
-            heart.update();
-            heart.draw();
-          });
-        },
-        resize() {
-          resize();
-          hearts.forEach((heart) => {
-            if (heart.x > w) heart.x = Math.random() * w;
-            if (heart.y > h) heart.y = Math.random() * h;
-          });
-        },
-      };
-    }
-
-    const systems = $$(".hearts-layer").map(createSystem);
-    if (!systems.length) return;
-
-    function loop() {
-      systems.forEach((system) => system.tick());
-      requestAnimationFrame(loop);
-    }
-
-    window.addEventListener("resize", () => systems.forEach((system) => system.resize()));
-    loop();
-  }
-
   async function init() {
     applyTheme();
     populateContent();
@@ -538,7 +446,7 @@ const CONFIG = {
 
     await initPreloader();
 
-    initHeartParticles();
+    initMusic();
     initLenis();
     initGSAP();
     initAOS();
