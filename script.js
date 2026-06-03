@@ -35,7 +35,7 @@ const CONFIG = {
     name: "Սաղմոսավանք",
     description: "Եկեղեցու պսակադրությունը տեղի կունենա Սաղմոսավանքում",
     address: "Սաղմոսավանք, Արագածոտնի մարզ",
-    image: "images/saghmosavanq-icon.png",
+    image: "images/saghmosavanq-icon.PNG",
     mapsLink: "https://maps.google.com/?q=Saghmosavank+Monastery+Armenia",
   },
 
@@ -43,7 +43,7 @@ const CONFIG = {
     name: "Հարսնաքար",
     description: "Հանդիսությունն անցկացվում է «Հարսնաքար» սրահում",
     address: "Երևան, Հրաչյա Աճառյան 37",
-    image: "images/restaurant.jpg",
+    image: "images/restaurant.JPG",
     mapsLink: "https://maps.google.com/?q=Harsnaqar+37+Acharyan+Yerevan",
   },
 
@@ -51,7 +51,7 @@ const CONFIG = {
     title: "Օրվա ծրագիր",
     schedule: [
       { time: "12:00", title: "Հարսի և փեսայի տուն", description: "Family & Friends House" },
-      { time: "14:40", title: "Եկեղեցի", description: "«պսակադրություն»" },
+      { time: "14:40", title: "Եկեղեցի", description: "Պսակադրություն" },
       { time: "17:30", title: "Ռեստորան «Հարսնաքար»", description: "Հանդիսություն" },
     ],
   },

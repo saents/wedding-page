@@ -1440,6 +1440,7 @@ body.is-ready .cursor-glow {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 65%;
 }
 
 .location-intro__photo-wrap {
