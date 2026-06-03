@@ -35,7 +35,7 @@ const CONFIG = {
     name: "Սաղմոսավանք",
     description: "Եկեղեցու պսակադրությունը տեղի կունենա Սաղմոսավանքում",
     address: "Սաղմոսավանք, Արագածոտնի մարզ",
-    image: "images/saghmosavanq-icon.PNG",
+    image: "images/sticker.webp",
     mapsLink: "https://maps.google.com/?q=Saghmosavank+Monastery+Armenia",
   },
 
@@ -43,7 +43,7 @@ const CONFIG = {
     name: "Հարսնաքար",
     description: "Հանդիսությունն անցկացվում է «Հարսնաքար» սրահում",
     address: "Երևան, Հրաչյա Աճառյան 37",
-    image: "images/restaurant.JPG",
+    image: "images/sticker1.webp",
     mapsLink: "https://maps.google.com/?q=Harsnaqar+37+Acharyan+Yerevan",
   },
 
@@ -105,6 +105,84 @@ const CONFIG = {
 
   let lenis;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const GSAP_URLS = [
+    "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js",
+    "https://unpkg.com/gsap@3.12.5/dist/gsap.min.js",
+  ];
+  const SCROLL_TRIGGER_URLS = [
+    "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js",
+    "https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js",
+  ];
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(), { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = src;
+      script.crossOrigin = "anonymous";
+      script.onload = () => resolve();
+      script.onerror = () => {
+        script.remove();
+        reject(new Error(`Failed to load ${src}`));
+      };
+      document.head.appendChild(script);
+    });
+  }
+
+  function waitForScriptTag(script, timeoutMs = 8000) {
+    return new Promise((resolve) => {
+      if (!script) {
+        resolve();
+        return;
+      }
+      if (script.dataset.loaded === "true" || script.dataset.failed === "true") {
+        resolve();
+        return;
+      }
+      const done = () => resolve();
+      script.addEventListener("load", done, { once: true });
+      script.addEventListener("error", done, { once: true });
+      setTimeout(done, timeoutMs);
+    });
+  }
+
+  async function waitForPendingGsapScripts() {
+    const tags = [...document.querySelectorAll("script[src]")].filter((s) =>
+      /gsap|ScrollTrigger/i.test(s.src)
+    );
+    await Promise.all(tags.map((tag) => waitForScriptTag(tag)));
+  }
+
+  async function loadFirstAvailable(urls, isLoaded) {
+    for (const url of urls) {
+      if (isLoaded()) return true;
+      try {
+        await loadScript(url);
+        if (isLoaded()) return true;
+      } catch {
+        /* try next CDN */
+      }
+    }
+    return isLoaded();
+  }
+
+  async function ensureGSAP() {
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") return true;
+
+    await waitForPendingGsapScripts();
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") return true;
+
+    await loadFirstAvailable(GSAP_URLS, () => typeof gsap !== "undefined");
+    await loadFirstAvailable(SCROLL_TRIGGER_URLS, () => typeof ScrollTrigger !== "undefined");
+
+    return typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+  }
 
   function coupleNames() {
     return `${CONFIG.couple.bride} և ${CONFIG.couple.groom}`;
@@ -377,9 +455,12 @@ const CONFIG = {
       smoothWheel: true,
     });
 
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
+    const hasGSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+    if (hasGSAP) {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
 
     $$('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", (e) => {
@@ -443,6 +524,10 @@ const CONFIG = {
     populateContent();
     initNavigation();
     initScrollProgress();
+
+    if (!prefersReducedMotion) {
+      await ensureGSAP();
+    }
 
     await initPreloader();
 
