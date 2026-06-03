@@ -5,12 +5,12 @@
 
 /* ---------- CSS Variables (defaults; overridden by JS) ---------- */
 :root {
-  --color-primary: #c9a87c;
-  --color-primary-light: #e8d5b5;
-  --color-primary-dark: #9a7b4f;
-  --color-accent: #d4a5a5;
-  --color-bg: #faf8f5;
-  --color-bg-alt: #f3efe8;
+  --color-primary: #2c2416;
+  --color-primary-light: #6b5d4d;
+  --color-primary-dark: #1a1612;
+  --color-accent: #8b7355;
+  --color-bg: #ffffff;
+  --color-bg-alt: #fafafa;
   --color-surface: rgba(255, 255, 255, 0.72);
   --color-text: #2c2416;
   --color-text-muted: #6b5d4d;
@@ -91,6 +91,13 @@ ul {
 .section {
   padding: clamp(4rem, 10vw, 7rem) 0;
   position: relative;
+}
+
+.section--white .container,
+.section--white .invitation__inner,
+.section--white .location-intro__inner {
+  position: relative;
+  z-index: 2;
 }
 
 .section__label {
@@ -304,6 +311,23 @@ body.is-ready .cursor-glow {
 /* ==========================================================================
    PARTICLES & PETALS
    ========================================================================== */
+/* ==========================================================================
+   HEART PARTICLES
+   ========================================================================== */
+.hearts-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.hearts-layer--section {
+  position: absolute;
+  inset: 0;
+}
+
 #particles-canvas {
   position: fixed;
   inset: 0;
@@ -552,6 +576,7 @@ body.is-ready .cursor-glow {
 .hero__bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
 }
 
 .hero__image {
@@ -591,29 +616,32 @@ body.is-ready .cursor-glow {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 10vw, 5.5rem);
-  font-weight: 300;
+  font-size: clamp(2.8rem, 10vw, 5rem);
+  font-weight: 200;
   line-height: 1.15;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  flex-wrap: wrap;
 }
 
 .hero__name {
-  display: block;
+  display: inline;
 }
 
 .hero__ampersand {
-  display: block;
-  font-style: italic;
-  font-size: 0.6em;
-  color: var(--color-primary-light);
-  margin: 0.25em 0;
+  display: inline;
+  font-weight: 200;
+  font-size: 0.75em;
+  opacity: 0.9;
 }
 
 .hero__date {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  letter-spacing: 0.2em;
-  margin-bottom: 2.5rem;
-  font-weight: 300;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  letter-spacing: 0.15em;
+  font-weight: 200;
 }
 
 .hero__actions {
@@ -892,8 +920,9 @@ body.is-ready .cursor-glow {
 /* ==========================================================================
    SCHEDULE
    ========================================================================== */
-.schedule {
-  background: var(--color-bg-alt);
+.schedule,
+.program {
+  background: var(--color-bg);
 }
 
 .schedule__list {
@@ -1268,7 +1297,382 @@ body.is-ready .cursor-glow {
 
   .petals-container,
   #particles-canvas,
+  .hearts-layer,
   .cursor-glow {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   ARMENIAN INVITATION — NEW SECTIONS
+   ========================================================================== */
+.section--white {
+  background: #fff;
+}
+
+.section__title--thin {
+  font-weight: 200;
+  letter-spacing: 0.08em;
+}
+
+/* Invitation + Calendar */
+.invitation__inner {
+  max-width: 520px;
+  text-align: center;
+}
+
+.invitation__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 200;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+
+.invitation__text {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+}
+
+.calendar {
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.calendar__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.calendar__month,
+.calendar__year {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 200;
+  letter-spacing: 0.05em;
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.calendar__weekdays span {
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.calendar__day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-text);
+}
+
+.calendar__day--empty {
+  visibility: hidden;
+}
+
+.calendar__day--highlight {
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  color: #fff;
+}
+
+.calendar__day--highlight::before {
+  content: "♥";
+  position: absolute;
+  inset: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5em;
+  color: #c45c5c;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Location intro */
+.location-intro__inner {
+  max-width: 640px;
+  text-align: center;
+}
+
+.location-intro__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.location-intro__photo-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-soft);
+  aspect-ratio: 4 / 3;
+}
+
+.location-intro__title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+
+/* Venues */
+.venue-block {
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.venue-block:last-child {
+  margin-bottom: 0;
+}
+
+.venue-block__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
+.venue-block__desc,
+.venue-block__address {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.venue-block__link {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+  transition: opacity var(--transition);
+}
+
+.venue-block__link:hover {
+  opacity: 0.7;
+}
+
+.venue-block__photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.venue-block__photo img {
+  width: 100%;
+  height: clamp(180px, 32vw, 240px);
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.18) saturate(0.82) brightness(0.96) contrast(1.06);
+  transition: filter var(--transition), transform 0.6s ease;
+}
+
+.venue-block__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(44, 36, 22, 0.06) 0%,
+    rgba(139, 115, 85, 0.14) 100%
+  );
+  pointer-events: none;
+}
+
+.venue-block:hover .venue-block__photo img {
+  filter: sepia(0.12) saturate(0.9) brightness(1) contrast(1.04);
+}
+
+.venue-block__map iframe {
+  width: 100%;
+  height: 220px;
+  border: none;
+  border-radius: var(--radius);
+}
+
+/* RSVP */
+.rsvp__card {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.rsvp__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  font-weight: 200;
+  margin-bottom: 1.25rem;
+}
+
+.rsvp__text {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.rsvp__note {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.btn--primary {
+  background: var(--color-text);
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-light);
+  box-shadow: none;
+}
+
+/* Countdown hero (Section 5) */
+.countdown-hero {
+  background: #fff;
+}
+
+.countdown-hero__visual {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.countdown-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.countdown-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1.5rem;
+}
+
+.countdown-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3.5vw, 1.75rem);
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+}
+
+.countdown-hero .countdown__grid {
+  max-width: 420px;
+}
+
+.countdown-hero .countdown__item {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.countdown-hero .countdown__value {
+  color: #fff;
+  font-weight: 200;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+}
+
+.countdown-hero .countdown__label {
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: none;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+/* Closing */
+.closing {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+}
+
+.closing__text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 200;
+  letter-spacing: 0.12em;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* Footer minimal */
+.footer {
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer__names {
+  font-family: var(--font-heading);
+  font-weight: 200;
+  font-size: 1.25rem;
+}
+
+.footer__date {
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.footer__credit {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+

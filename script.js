@@ -3,151 +3,98 @@
    Edit ONLY the CONFIG object below to customize the entire website.
    ========================================================================== */
 
-// ==========================================================================
-// ★ CONFIGURATION — EDIT EVERYTHING HERE ★
-// ==========================================================================
 const CONFIG = {
-  // —— Couple ——
-  bride: {
-    name: "Isabella",
-    role: "The Bride",
-    bio: "A dreamer with a heart full of grace, ready to begin forever with her soulmate.",
-    photo: "images/bride.jpg", // Replace with your image path
-  },
-  groom: {
-    name: "Alexander",
-    role: "The Groom",
-    bio: "Kind, devoted, and endlessly in love — excited to call her his wife.",
-    photo: "images/groom.jpg",
-  },
+  initials: { bride: "Ս", groom: "Լ" },
 
-  // —— Wedding Info ——
-  weddingDate: "Saturday, June 14, 2026",
-  countdownTarget: "2026-06-14T16:00:00", // ISO format: YYYY-MM-DDTHH:mm:ss
+  weddingDate: "Հուլիսի 26, 2026",
+  countdownTarget: "2026-07-26T14:40:00",
 
-  // —— Venue ——
-  venue: {
-    name: "The Grand Rose Garden Estate",
-    address: "128 Rosewood Lane, Napa Valley, CA 94558",
-    mapsLink: "https://maps.google.com/?q=Grand+Rose+Garden+Estate+Napa+Valley",
-    embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.0!2d-122.2869!3d38.2975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDE3JzUxLjAiTiAxMjLCsDE3JzEyLjgiVw!5e0!3m2!1sen!2sus!4v1",
-  },
-
-  // —— Hero ——
   hero: {
-    subtitle: "We invite you to celebrate our wedding",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80",
+    image: "images/main.JPG",
   },
 
-  // —— Love Story ——
-  story: {
-    intro:
-      "Every love story is beautiful, but ours is our favorite. From a chance meeting to a lifetime promise — here is how our hearts found their way home.",
-    background: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1920&q=80",
-    timeline: [
-      { year: "2018", title: "First Glance", text: "Our eyes met across a crowded café — and the world stood still." },
-      { year: "2019", title: "First Date", text: "A sunset walk that turned into hours of laughter and endless conversation." },
-      { year: "2021", title: "Moving In", text: "We built a home filled with music, morning coffee, and quiet joy." },
-      { year: "2024", title: "The Proposal", text: "Under a canopy of stars, he asked — and she said yes with tears of happiness." },
-      { year: "2026", title: "Forever Begins", text: "We say 'I do' and begin the greatest adventure of all." },
+  invitation: {
+    title: "Սիրելի Հյուրեր",
+    text: "Մեր կյանքի գեղեցիկ օրը մոտենում է։ Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի այս լուսավոր ու հիշարժան օրը",
+  },
+
+  calendar: {
+    year: 2026,
+    month: 6, // 0-indexed: July
+    highlightDay: 26,
+    monthName: "Հուլիս",
+    weekDays: ["ԵՐԿ", "ԵՐՔ", "ՉՈՐ", "ՀՆԳ", "ՈՒՐԲ", "ՇԲԹ", "ԿԻՐ"],
+  },
+
+  location: {
+    title: "Տեղակայում",
+    photo: "images/hands.JPG",
+  },
+
+  church: {
+    name: "Սաղմոսավանք",
+    description: "Եկեղեցու պսակադրությունը տեղի կունենա Սաղմոսավանքում",
+    address: "Սաղմոսավանք, Արագածոտնի մարզ",
+    image: "images/saghmosavanq.jpg",
+    mapsLink: "https://maps.google.com/?q=Saghmosavank+Monastery+Armenia",
+    embedUrl:
+      "https://maps.google.com/maps?q=Saghmosavank+Monastery+Armenia&z=15&output=embed",
+  },
+
+  hall: {
+    name: "Հարսնաքար",
+    description: "Հանդիսությունն անցկացվում է Հարսնաքար սրահում",
+    address: "Երևան, Հրաչյա Աճառյան 37",
+    image: "images/harsnaqar.png",
+    mapsLink: "https://maps.google.com/?q=Harsnaqar+37+Acharyan+Yerevan",
+    embedUrl:
+      "https://maps.google.com/maps?q=Harsnaqar+Restaurant+37+Acharyan+Yerevan&z=15&output=embed",
+  },
+
+  program: {
+    title: "Օրվա ծրագիր",
+    schedule: [
+      { time: "12:00", title: "Հարսի և փեսայի տուն", description: "Ընտանիքի և ընկերների տուն" },
+      { time: "14:40", title: "Եկեղեցի", description: "Սաղմոսավանք" },
+      { time: "17:30", title: "Ռեստորան Հարսնաքար", description: "Հանդիսություն" },
     ],
   },
 
-  // —— Wedding Details Cards ——
-  details: [
-    { icon: "💒", title: "Ceremony", text: "4:00 PM · Rose Garden Chapel" },
-    { icon: "🥂", title: "Cocktail Hour", text: "5:30 PM · Terrace Lounge" },
-    { icon: "🍽️", title: "Reception", text: "7:00 PM · Grand Ballroom" },
-    { icon: "👗", title: "Dress Code", text: "Formal / Black Tie Optional" },
-  ],
-
-  // —— Day Schedule ——
-  schedule: [
-    { time: "3:00", title: "Guest Arrival", description: "Welcome drinks and seating" },
-    { time: "4:00", title: "Wedding Ceremony", description: "Exchange of vows in the garden chapel" },
-    { time: "5:30", title: "Cocktail Hour", description: "Hors d'oeuvres and live acoustic music" },
-    { time: "7:00", title: "Reception Dinner", description: "Speeches, dinner, and first dance" },
-    { time: "10:00", title: "Farewell", description: "Sparkler send-off under the stars" },
-  ],
-
-  // —— Gallery ——
-  gallery: [
-    "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80",
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80",
-    "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-    "https://images.unsplash.com/photo-1520854221256-17451cc791c5?w=800&q=80",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80",
-    "https://images.unsplash.com/photo-1465495976277-31d44c8a0c9e?w=800&q=80",
-  ],
-
-  // —— RSVP ——
-  rsvp: {
-    text: "Your presence would mean the world to us. Please let us know if you can join our celebration by the date below.",
-    link: "https://forms.google.com/", // Replace with your RSVP form URL
-    note: "Kindly respond by May 1, 2026",
-    background: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
+  countdown: {
+    title: "Մեր հարսանիքին մնացել է...",
+    image: "images/untilThisDay.JPG",
+    labels: {
+      days: "օր",
+      hours: "ժամ",
+      minutes: "րոպե",
+      seconds: "վրկ",
+    },
   },
 
-  // —— Family & Friends ——
-  family: [
-    { group: "Bride's Parents", names: "Robert & Margaret Chen" },
-    { group: "Groom's Parents", names: "James & Elizabeth Hartley" },
-    { group: "Maid of Honor", names: "Sophia Martinez" },
-    { group: "Best Man", names: "Daniel Brooks" },
-    { group: "Bridesmaids", names: "Emma · Lily · Grace" },
-    { group: "Groomsmen", names: "Michael · Chris · Ryan" },
-  ],
-
-  // —— Contact ——
-  contact: [
-    { label: "Bride", value: "isabella@email.com", href: "mailto:isabella@email.com" },
-    { label: "Groom", value: "alexander@email.com", href: "mailto:alexander@email.com" },
-    { label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-  ],
-
-  // —— Music ——
-  music: {
-    url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", // Replace with your MP3 URL
-    enabled: true,
+  closing: {
+    text: "Մինչ հանդիպում",
   },
 
-  // —— Theme & Typography ——
   theme: {
-    primary: "#c9a87c",
-    primaryLight: "#e8d5b5",
-    primaryDark: "#9a7b4f",
-    accent: "#d4a5a5",
-    presets: [
-      { name: "Champagne", primary: "#c9a87c", accent: "#d4a5a5" },
-      { name: "Blush", primary: "#d4a5a5", accent: "#e8c4c4" },
-      { name: "Sage", primary: "#8fa68e", accent: "#b8c9b7" },
-      { name: "Navy", primary: "#5b6b8a", accent: "#9aa8c4" },
-    ],
+    primary: "#2c2416",
+    primaryLight: "#6b5d4d",
+    primaryDark: "#1a1612",
+    accent: "#8b7355",
   },
 
   fonts: {
-    heading: "Cormorant Garamond",
-    body: "Montserrat",
+    heading: "Noto Sans Armenian",
+    body: "Noto Sans Armenian",
     googleFontsUrl:
-      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap",
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@100;200;300;400&display=swap",
   },
 
-  // —— Feature Toggles ——
   features: {
-    particles: true,
-    petals: true,
-    cursorGlow: true,
-    darkMode: true,
-    themePicker: true,
     preloader: true,
     parallax: true,
+    hearts: true,
   },
 };
-
-// ==========================================================================
-// DO NOT EDIT BELOW unless customizing behavior
-// ==========================================================================
 
 (function () {
   "use strict";
@@ -156,10 +103,8 @@ const CONFIG = {
   const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
   let lenis;
-  let lightboxIndex = 0;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // —— Apply theme from CONFIG ——
   function applyTheme() {
     const root = document.documentElement;
     const t = CONFIG.theme;
@@ -167,106 +112,89 @@ const CONFIG = {
     root.style.setProperty("--color-primary-light", t.primaryLight);
     root.style.setProperty("--color-primary-dark", t.primaryDark);
     root.style.setProperty("--color-accent", t.accent);
-    root.style.setProperty("--font-heading", `"${CONFIG.fonts.heading}", Georgia, serif`);
+    root.style.setProperty("--font-heading", `"${CONFIG.fonts.heading}", system-ui, sans-serif`);
     root.style.setProperty("--font-body", `"${CONFIG.fonts.body}", system-ui, sans-serif`);
-
-    document.title = `${CONFIG.bride.name} & ${CONFIG.groom.name} — Wedding`;
+    document.title = `${CONFIG.initials.bride} և ${CONFIG.initials.groom} — Հարսանիքի հրավեր`;
   }
 
-  // —— Populate static content ——
   function populateContent() {
-    const initials = `${CONFIG.bride.name.charAt(0)} & ${CONFIG.groom.name.charAt(0)}`;
-
-    $("[data-nav-logo]").textContent = initials;
-    $("[data-bride-name]").textContent = CONFIG.bride.name;
-    $("[data-groom-name]").textContent = CONFIG.groom.name;
-    $("[data-hero-subtitle]").textContent = CONFIG.hero.subtitle;
+    $("[data-nav-logo]").textContent = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
+    $("[data-bride-initial]").textContent = CONFIG.initials.bride;
+    $("[data-groom-initial]").textContent = CONFIG.initials.groom;
     $("[data-wedding-date]").textContent = CONFIG.weddingDate;
-    $("[data-footer-names]").textContent = `${CONFIG.bride.name} & ${CONFIG.groom.name}`;
+    $("[data-footer-names]").textContent = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
     $("[data-footer-date]").textContent = CONFIG.weddingDate;
     $("[data-year]").textContent = new Date().getFullYear();
 
     const heroImg = $("[data-hero-image]");
     heroImg.src = CONFIG.hero.image;
-    heroImg.alt = `${CONFIG.bride.name} and ${CONFIG.groom.name}`;
+    heroImg.alt = `${CONFIG.initials.bride} և ${CONFIG.initials.groom}`;
 
-    $("[data-story-intro]").textContent = CONFIG.story.intro;
-    $("[data-story-bg]").style.backgroundImage = `url(${CONFIG.story.background})`;
-    $("[data-rsvp-bg]").style.backgroundImage = `url(${CONFIG.rsvp.background})`;
-    $("[data-rsvp-text]").textContent = CONFIG.rsvp.text;
-    $("[data-rsvp-note]").textContent = CONFIG.rsvp.note;
+    $("[data-invitation-title]").textContent = CONFIG.invitation.title;
+    $("[data-invitation-text]").textContent = CONFIG.invitation.text;
 
-    const rsvpLink = $("#rsvp-link");
-    rsvpLink.href = CONFIG.rsvp.link;
+    $("[data-location-title]").textContent = CONFIG.location.title;
+    $("[data-location-photo]").src = CONFIG.location.photo;
 
-    renderCouple();
-    renderTimeline();
-    renderDetails();
+    $("[data-church-name]").textContent = CONFIG.church.name;
+    $("[data-church-desc]").textContent = CONFIG.church.description;
+    $("[data-hall-name]").textContent = CONFIG.hall.name;
+    $("[data-hall-desc]").textContent = CONFIG.hall.description;
+
+    $("[data-program-title]").textContent = CONFIG.program.title;
+
+    $("[data-countdown-title]").textContent = CONFIG.countdown.title;
+    $("[data-countdown-image]").src = CONFIG.countdown.image;
+    $("[data-closing-text]").textContent = CONFIG.closing.text;
+
+    renderCalendar();
+    renderMaps();
     renderSchedule();
-    renderGallery();
-    renderFamily();
-    renderContact();
-    renderMap();
     renderCountdown();
-    renderThemePicker();
-    setupMusic();
   }
 
-  function renderCouple() {
-    const grid = $("#couple-grid");
-    const people = [
-      { ...CONFIG.bride, role: CONFIG.bride.role },
-      { ...CONFIG.groom, role: CONFIG.groom.role },
-    ];
+  function renderCalendar() {
+    const cal = CONFIG.calendar;
+    const firstDay = new Date(cal.year, cal.month, 1).getDay();
+    const mondayStart = (firstDay + 6) % 7;
+    const daysInMonth = new Date(cal.year, cal.month + 1, 0).getDate();
 
-    grid.innerHTML = people
-      .map(
-        (p, i) => `
-      <article class="couple__card" data-aos="fade-up" data-aos-delay="${i * 150}">
-        <div class="couple__photo-wrap">
-          <img class="couple__photo" src="${p.photo}" alt="${p.name}" loading="lazy"
-            onerror="this.src='https://images.unsplash.com/photo-1529636798458-9218f81d1b0e?w=600&q=80'" />
-        </div>
-        <p class="couple__role">${p.role}</p>
-        <h3 class="couple__name">${p.name}</h3>
-        <p class="couple__bio">${p.bio}</p>
-      </article>`
-      )
-      .join("");
+    let cells = "";
+    for (let i = 0; i < mondayStart; i++) {
+      cells += `<span class="calendar__day calendar__day--empty"></span>`;
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const isHighlight = day === cal.highlightDay;
+      cells += `<span class="calendar__day${isHighlight ? " calendar__day--highlight" : ""}">${day}</span>`;
+    }
+
+    $("#calendar").innerHTML = `
+      <div class="calendar__header">
+        <span class="calendar__month">${cal.monthName}</span>
+        <span class="calendar__year">${cal.year}</span>
+      </div>
+      <div class="calendar__weekdays">${cal.weekDays.map((d) => `<span>${d}</span>`).join("")}</div>
+      <div class="calendar__days">${cells}</div>`;
   }
 
-  function renderTimeline() {
-    $("#timeline").innerHTML = CONFIG.story.timeline
-      .map(
-        (item, i) => `
-      <div class="timeline__item" data-aos="fade-left" data-aos-delay="${i * 80}">
-        <span class="timeline__dot"></span>
-        <p class="timeline__year">${item.year}</p>
-        <h3 class="timeline__title">${item.title}</h3>
-        <p class="timeline__text">${item.text}</p>
-      </div>`
-      )
-      .join("");
-  }
-
-  function renderDetails() {
-    $("#details-grid").innerHTML = CONFIG.details
-      .map(
-        (d, i) => `
-      <div class="detail-card glass" data-aos="fade-up" data-aos-delay="${i * 100}">
-        <div class="detail-card__icon">${d.icon}</div>
-        <h3 class="detail-card__title">${d.title}</h3>
-        <p class="detail-card__text">${d.text}</p>
-      </div>`
-      )
-      .join("");
+  function renderMaps() {
+    function mapBlock(venue) {
+      return `
+        ${venue.image ? `<div class="venue-block__photo"><img src="${venue.image}" alt="${venue.name}" loading="lazy" /></div>` : ""}
+        <p class="venue-block__address">${venue.address}</p>
+        <a class="venue-block__link" href="${venue.mapsLink}" target="_blank" rel="noopener">Բացել քարտեզում →</a>
+        <iframe src="${venue.embedUrl}" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="${venue.name}"></iframe>`;
+    }
+    $("#church-map").innerHTML = mapBlock(CONFIG.church);
+    $("#hall-map").innerHTML = mapBlock(CONFIG.hall);
   }
 
   function renderSchedule() {
-    $("#schedule-list").innerHTML = CONFIG.schedule
+    $("#schedule-list").innerHTML = CONFIG.program.schedule
       .map(
         (s, i) => `
-      <div class="schedule__item" data-aos="fade-right" data-aos-delay="${i * 80}">
+      <div class="schedule__item" data-aos="fade-up" data-aos-delay="${i * 80}">
         <span class="schedule__time">${s.time}</span>
         <div class="schedule__info">
           <h3>${s.title}</h3>
@@ -277,63 +205,14 @@ const CONFIG = {
       .join("");
   }
 
-  function renderGallery() {
-    const grid = $("#gallery-grid");
-    grid.innerHTML = CONFIG.gallery
-      .map(
-        (src, i) => `
-      <div class="gallery__item" data-index="${i}" data-aos="zoom-in" data-aos-delay="${(i % 4) * 80}">
-        <img src="${src}" alt="Gallery photo ${i + 1}" loading="lazy" />
-      </div>`
-      )
-      .join("");
-
-    grid.addEventListener("click", (e) => {
-      const item = e.target.closest(".gallery__item");
-      if (!item) return;
-      openLightbox(Number(item.dataset.index));
-    });
-  }
-
-  function renderFamily() {
-    $("#family-grid").innerHTML = CONFIG.family
-      .map(
-        (f, i) => `
-      <div class="family__card" data-aos="flip-left" data-aos-delay="${i * 60}">
-        <p class="family__group">${f.group}</p>
-        <p class="family__names">${f.names}</p>
-      </div>`
-      )
-      .join("");
-  }
-
-  function renderContact() {
-    $("#footer-contact").innerHTML = CONFIG.contact
-      .map((c) => `<a href="${c.href}"><strong>${c.label}:</strong> ${c.value}</a>`)
-      .join("");
-  }
-
-  function renderMap() {
-    $("#map-info").innerHTML = `
-      <h3 class="map__venue">${CONFIG.venue.name}</h3>
-      <p class="map__address">${CONFIG.venue.address}</p>
-      <a class="map__link" href="${CONFIG.venue.mapsLink}" target="_blank" rel="noopener">Open in Google Maps →</a>`;
-
-    $("#map-embed").innerHTML = `<iframe
-      src="${CONFIG.venue.embedUrl}"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Wedding venue location"></iframe>`;
-  }
-
   function renderCountdown() {
     const grid = $("#countdown-grid");
+    const labels = CONFIG.countdown.labels;
     const units = [
-      { id: "days", label: "Days" },
-      { id: "hours", label: "Hours" },
-      { id: "minutes", label: "Minutes" },
-      { id: "seconds", label: "Seconds" },
+      { id: "days", label: labels.days },
+      { id: "hours", label: labels.hours },
+      { id: "minutes", label: labels.minutes },
+      { id: "seconds", label: labels.seconds },
     ];
 
     grid.innerHTML = units
@@ -367,7 +246,7 @@ const CONFIG = {
         if (el.textContent !== str && typeof anime !== "undefined" && !prefersReducedMotion) {
           anime({
             targets: el,
-            scale: [1.15, 1],
+            scale: [1.08, 1],
             duration: 400,
             easing: "easeOutElastic(1, .6)",
           });
@@ -380,90 +259,6 @@ const CONFIG = {
     setInterval(tick, 1000);
   }
 
-  function renderThemePicker() {
-    if (!CONFIG.features.themePicker) return;
-    const picker = $("#theme-picker");
-    picker.innerHTML = CONFIG.theme.presets
-      .map(
-        (p, i) =>
-          `<button class="theme-picker__dot${i === 0 ? " is-active" : ""}"
-            style="background:${p.primary}"
-            data-primary="${p.primary}"
-            data-accent="${p.accent}"
-            title="${p.name}"
-            aria-label="Theme: ${p.name}"></button>`
-      )
-      .join("");
-
-    picker.addEventListener("click", (e) => {
-      const dot = e.target.closest(".theme-picker__dot");
-      if (!dot) return;
-      $$(".theme-picker__dot").forEach((d) => d.classList.remove("is-active"));
-      dot.classList.add("is-active");
-      document.documentElement.style.setProperty("--color-primary", dot.dataset.primary);
-      document.documentElement.style.setProperty("--color-accent", dot.dataset.accent);
-    });
-  }
-
-  function setupMusic() {
-    const audio = $("#bg-music");
-    const btn = $("#music-btn");
-    if (!CONFIG.music.enabled || !CONFIG.music.url) {
-      btn.closest(".footer__music").style.display = "none";
-      return;
-    }
-    audio.src = CONFIG.music.url;
-
-    btn.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play().then(() => btn.classList.add("is-playing")).catch(() => {});
-      } else {
-        audio.pause();
-        btn.classList.remove("is-playing");
-      }
-    });
-  }
-
-  // —— Lightbox ——
-  function openLightbox(index) {
-    lightboxIndex = index;
-    const lb = $("#lightbox");
-    const img = $(".lightbox__img", lb);
-    img.src = CONFIG.gallery[index];
-    img.alt = `Photo ${index + 1}`;
-    lb.classList.add("is-open");
-    lb.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeLightbox() {
-    const lb = $("#lightbox");
-    lb.classList.remove("is-open");
-    lb.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-
-  function initLightbox() {
-    const lb = $("#lightbox");
-    $(".lightbox__close", lb).addEventListener("click", closeLightbox);
-    lb.addEventListener("click", (e) => {
-      if (e.target === lb) closeLightbox();
-    });
-    $(".lightbox__prev", lb).addEventListener("click", () => {
-      lightboxIndex = (lightboxIndex - 1 + CONFIG.gallery.length) % CONFIG.gallery.length;
-      $(".lightbox__img", lb).src = CONFIG.gallery[lightboxIndex];
-    });
-    $(".lightbox__next", lb).addEventListener("click", () => {
-      lightboxIndex = (lightboxIndex + 1) % CONFIG.gallery.length;
-      $(".lightbox__img", lb).src = CONFIG.gallery[lightboxIndex];
-    });
-    document.addEventListener("keydown", (e) => {
-      if (!lb.classList.contains("is-open")) return;
-      if (e.key === "Escape") closeLightbox();
-    });
-  }
-
-  // —— Preloader ——
   function initPreloader() {
     if (!CONFIG.features.preloader || prefersReducedMotion) {
       $("#preloader")?.remove();
@@ -506,7 +301,6 @@ const CONFIG = {
     });
   }
 
-  // —— Navigation ——
   function initNavigation() {
     const header = $("#header");
     const toggle = $("#nav-toggle");
@@ -535,7 +329,6 @@ const CONFIG = {
       });
     });
 
-    // Active section highlight
     const sections = $$("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -553,30 +346,6 @@ const CONFIG = {
     sections.forEach((s) => observer.observe(s));
   }
 
-  // —— Dark mode ——
-  function initDarkMode() {
-    if (!CONFIG.features.darkMode) {
-      $("#theme-toggle")?.remove();
-      return;
-    }
-
-    const toggle = $("#theme-toggle");
-    const stored = localStorage.getItem("wedding-theme");
-    if (stored === "dark") document.documentElement.setAttribute("data-theme", "dark");
-
-    toggle.addEventListener("click", () => {
-      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-      if (isDark) {
-        document.documentElement.removeAttribute("data-theme");
-        localStorage.setItem("wedding-theme", "light");
-      } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-        localStorage.setItem("wedding-theme", "dark");
-      }
-    });
-  }
-
-  // —— Lenis smooth scroll ——
   function initLenis() {
     if (prefersReducedMotion || typeof Lenis === "undefined") return;
 
@@ -602,16 +371,14 @@ const CONFIG = {
     });
   }
 
-  // —— GSAP animations ——
   function initGSAP() {
     if (prefersReducedMotion || typeof gsap === "undefined") return;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero parallax
     if (CONFIG.features.parallax) {
       gsap.to(".hero__image", {
-        yPercent: 20,
+        yPercent: 15,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
@@ -620,62 +387,9 @@ const CONFIG = {
           scrub: true,
         },
       });
-
-      gsap.to(".story__bg", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".story",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
     }
-
-    // Section reveals
-    gsap.utils.toArray(".section__title").forEach((title) => {
-      gsap.from(title, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        scrollTrigger: { trigger: title, start: "top 85%", toggleActions: "play none none none" },
-      });
-    });
-
-    // Countdown float
-    gsap.to(".countdown__item", {
-      y: -6,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      stagger: 0.2,
-      ease: "sine.inOut",
-    });
   }
 
-  // —— Splitting.js text ——
-  function initSplitting() {
-    if (prefersReducedMotion || typeof Splitting === "undefined") return;
-
-    Splitting({ target: "[data-split]" });
-
-    $$("[data-split].splitting").forEach((el) => {
-      const chars = el.querySelectorAll(".char");
-      if (typeof gsap !== "undefined") {
-        gsap.to(chars, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.03,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
-        });
-      }
-    });
-  }
-
-  // —— AOS ——
   function initAOS() {
     if (prefersReducedMotion || typeof AOS === "undefined") return;
     AOS.init({
@@ -687,7 +401,6 @@ const CONFIG = {
     });
   }
 
-  // —— Scroll progress ——
   function initScrollProgress() {
     const bar = $(".scroll-progress__bar");
     if (!bar) return;
@@ -703,149 +416,133 @@ const CONFIG = {
     update();
   }
 
-  // —— Cursor glow ——
-  function initCursorGlow() {
-    if (!CONFIG.features.cursorGlow || prefersReducedMotion) return;
-    const glow = $(".cursor-glow");
-    if (!glow) return;
+  function initHeartParticles() {
+    if (!CONFIG.features.hearts || prefersReducedMotion) return;
 
-    let x = 0;
-    let y = 0;
-    let cx = 0;
-    let cy = 0;
+    const colors = [
+      CONFIG.theme.primary,
+      CONFIG.theme.primaryLight,
+      CONFIG.theme.accent,
+    ];
 
-    document.addEventListener("mousemove", (e) => {
-      x = e.clientX;
-      y = e.clientY;
-    });
-
-    function animate() {
-      cx += (x - cx) * 0.12;
-      cy += (y - cy) * 0.12;
-      glow.style.left = `${cx}px`;
-      glow.style.top = `${cy}px`;
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-
-  // —— Floating particles ——
-  function initParticles() {
-    if (!CONFIG.features.particles || prefersReducedMotion) return;
-    const canvas = $("#particles-canvas");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    let w, h;
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+    function drawHeart(ctx, x, y, size) {
+      const s = size / 2;
+      ctx.beginPath();
+      ctx.moveTo(0, s * 0.35);
+      ctx.bezierCurveTo(0, -s * 0.2, -s, -s * 0.2, -s, s * 0.35);
+      ctx.bezierCurveTo(-s, s * 0.85, 0, s * 1.25, 0, s * 1.55);
+      ctx.bezierCurveTo(0, s * 1.25, s, s * 0.85, s, s * 0.35);
+      ctx.bezierCurveTo(s, -s * 0.2, 0, -s * 0.2, 0, s * 0.35);
+      ctx.closePath();
+      ctx.fill();
     }
 
-    class Particle {
-      constructor() {
-        this.reset();
+    function createSystem(canvas) {
+      const bounds = canvas.parentElement;
+      const ctx = canvas.getContext("2d");
+      let w = 0;
+      let h = 0;
+      let hearts = [];
+
+      function resize() {
+        const rect = bounds.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        w = Math.max(rect.width, 1);
+        h = Math.max(rect.height, 1);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = `${w}px`;
+        canvas.style.height = `${h}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }
-      reset() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.4 + 0.1;
+
+      class Heart {
+        constructor(initial) {
+          this.reset(initial);
+        }
+
+        reset(initial) {
+          this.x = Math.random() * w;
+          this.y = initial ? Math.random() * h : -20;
+          this.size = Math.random() * 12 + 8;
+          this.speedY = Math.random() * 0.35 + 0.15;
+          this.speedX = (Math.random() - 0.5) * 0.25;
+          this.wobble = Math.random() * Math.PI * 2;
+          this.wobbleSpeed = Math.random() * 0.02 + 0.008;
+          this.rotation = Math.random() * Math.PI * 2;
+          this.rotationSpeed = (Math.random() - 0.5) * 0.015;
+          this.opacity = Math.random() * 0.3 + 0.12;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        update() {
+          this.wobble += this.wobbleSpeed;
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.wobble) * 0.2;
+          this.rotation += this.rotationSpeed;
+          if (this.y > h + this.size) this.reset(false);
+          if (this.x < -this.size) this.x = w + this.size;
+          if (this.x > w + this.size) this.x = -this.size;
+        }
+
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.opacity;
+          ctx.fillStyle = this.color;
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
+          drawHeart(ctx, 0, 0, this.size);
+          ctx.restore();
+        }
       }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201, 168, 124, ${this.opacity})`;
-        ctx.fill();
-      }
+
+      resize();
+      const count = Math.min(28, Math.max(6, Math.floor((w * h) / 32000)));
+      hearts = Array.from({ length: count }, () => new Heart(true));
+
+      return {
+        tick() {
+          ctx.clearRect(0, 0, w, h);
+          hearts.forEach((heart) => {
+            heart.update();
+            heart.draw();
+          });
+        },
+        resize() {
+          resize();
+          hearts.forEach((heart) => {
+            if (heart.x > w) heart.x = Math.random() * w;
+            if (heart.y > h) heart.y = Math.random() * h;
+          });
+        },
+      };
     }
 
-    resize();
-    const count = Math.min(50, Math.floor((w * h) / 25000));
-    particles = Array.from({ length: count }, () => new Particle());
+    const systems = $$(".hearts-layer").map(createSystem);
+    if (!systems.length) return;
 
     function loop() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach((p) => {
-        p.update();
-        p.draw();
-      });
+      systems.forEach((system) => system.tick());
       requestAnimationFrame(loop);
     }
 
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", () => systems.forEach((system) => system.resize()));
     loop();
   }
 
-  // —— Flower petals ——
-  function initPetals() {
-    if (!CONFIG.features.petals || prefersReducedMotion) return;
-    const container = $(".petals-container");
-    if (!container) return;
-
-    const count = window.innerWidth < 768 ? 8 : 15;
-    for (let i = 0; i < count; i++) {
-      const petal = document.createElement("span");
-      petal.className = "petal";
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.animationDuration = `${12 + Math.random() * 18}s`;
-      petal.style.animationDelay = `${Math.random() * 10}s`;
-      petal.style.width = petal.style.height = `${8 + Math.random() * 8}px`;
-      container.appendChild(petal);
-    }
-  }
-
-  // —— Lazy load fallback for images ——
-  function initLazyImages() {
-    if (!("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const img = entry.target;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute("data-src");
-          }
-          observer.unobserve(img);
-        });
-      },
-      { rootMargin: "200px" }
-    );
-
-    $$("img[loading='lazy']").forEach((img) => observer.observe(img));
-  }
-
-  // —— Boot ——
   async function init() {
     applyTheme();
     populateContent();
     initNavigation();
-    initDarkMode();
-    initLightbox();
     initScrollProgress();
-    initCursorGlow();
-    initParticles();
-    initPetals();
-    initLazyImages();
 
     await initPreloader();
 
+    initHeartParticles();
     initLenis();
     initGSAP();
-    initSplitting();
     initAOS();
 
-    // Refresh after dynamic content
     if (typeof AOS !== "undefined") AOS.refresh();
     if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
   }
