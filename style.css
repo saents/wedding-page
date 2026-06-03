@@ -1416,6 +1416,10 @@ body.is-ready .cursor-glow {
 }
 
 /* Location intro */
+.location-intro.section {
+  padding: 0;
+}
+
 .location-intro__inner {
   max-width: 640px;
   text-align: center;
