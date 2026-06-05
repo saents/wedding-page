@@ -1527,8 +1527,6 @@ body.is-ready .cursor-glow {
   height: clamp(180px, 32vw, 240px);
   object-fit: cover;
   display: block;
-  filter: sepia(0.18) saturate(0.82) brightness(0.96) contrast(1.06);
-  transition: filter var(--transition), transform 0.6s ease;
 }
 
 .venue-block__photo::after {
@@ -1564,18 +1562,13 @@ body.is-ready .cursor-glow {
   height: clamp(120px, 24vw, 180px);
   margin-inline: auto;
   object-fit: contain;
-  filter: brightness(1.08) contrast(1.15);
   padding: 0;
-  background-color: #ffffff;
+  background-color: transparent;
   display: block;
 }
 
 .venue-block__photo--icon::after {
   display: none;
-}
-
-.venue-block:hover .venue-block__photo--icon img {
-  filter: brightness(1.08) contrast(1.15);
 }
 
 .venue-block__map iframe {
